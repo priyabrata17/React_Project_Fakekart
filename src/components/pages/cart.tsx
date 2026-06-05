@@ -4,7 +4,6 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
-  emptyCart,
 } from "../../Redux/cartSlice";
 
 import { toast } from "sonner";
