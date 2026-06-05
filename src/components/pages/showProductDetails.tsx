@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
-import { addToCart } from "../../Redux/cartSlice";
+import { addToCart, removeFromCart } from "../../Redux/cartSlice";
 
 export default function ShowProductDetails() {
   const { isLoading, productDetailsData } = useSelector(
@@ -46,6 +46,7 @@ export default function ShowProductDetails() {
         text: res?.message || "Your file has been deleted.",
         icon: "success",
       });
+      dispatch(removeFromCart(productId));
       setTimeout(() => navigate("/"), 1000);
     } catch (error: any) {
       Swal.fire({
