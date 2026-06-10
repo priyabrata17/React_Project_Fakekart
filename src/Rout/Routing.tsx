@@ -13,6 +13,9 @@ import CreateProduct from "../components/pages/createProduct";
 import ShowProductDetails from "../components/pages/showProductDetails";
 import UpdateProduct from "../components/pages/updateProduct";
 import Cart from "../components/pages/cart";
+import About from "../components/pages/about";
+import ContactUs from "../components/pages/contactUs";
+import OrderPlaced from "../components/pages/orderPlaced";
 const PublicWrapper = () => {
   const fakekartToken =
     localStorage.getItem("fakekartToken") ||
@@ -33,6 +36,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <Home /> },
+      {path: "/about", element: <About />},
+      {path: "/contact-us", element: <ContactUs />},
       {
         element: <PublicWrapper />,
         children: [
@@ -48,6 +53,7 @@ const router = createBrowserRouter([
           { path: "/cart", element: <Cart/> },
           { path: "/details/:productId", element: <ShowProductDetails /> },
           { path: "/update-product/:productId", element: <UpdateProduct /> },
+          { path: "/order-placed", element: <OrderPlaced /> },
         ],
       },
     ],

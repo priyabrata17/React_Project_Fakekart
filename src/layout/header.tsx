@@ -1,4 +1,4 @@
-import type { INavLinks } from "../types/types";
+import type { INavLinks } from "../types/type";
 import { NavLink } from "react-router-dom";
 import { TfiMenuAlt, TfiClose } from "react-icons/tfi";
 import { useState } from "react";
@@ -9,6 +9,8 @@ import type { RootState } from "../Redux/store";
 
 const navLinksPublic: INavLinks[] = [
   { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Contact Us", path: "/contact-us" },
   { name: "Signup", path: "/register" },
   { name: "Login", path: "/login" },
 ];
@@ -16,6 +18,8 @@ const navLinksPublic: INavLinks[] = [
 const navLinksPrivate: INavLinks[] = [
   { name: "Home", path: "/" },
   { name: "Dashboard", path: "/dashboard" },
+  { name: "About", path: "/about" },
+  { name: "Contact Us", path: "/contact-us" },
   { name: "Create Product", path: "/create-product" },
   { name: "Cart", path: "/cart" },
 ];

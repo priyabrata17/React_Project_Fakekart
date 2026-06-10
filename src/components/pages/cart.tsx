@@ -4,19 +4,32 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
+  emptyCart,
 } from "../../Redux/cartSlice";
-
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import LoaderButton from "../loader/loaderButton";
 
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>();
-
+  const navigate = useNavigate();
   const { items } = useSelector((state: RootState) => state.cart);
-
+  const [loading, setLoading] = useState(false);
   const totalPrice = items.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
   );
+
+  const handleOnclick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      dispatch(emptyCart());
+      setLoading(false);
+      navigate("/order-placed");
+      toast.success("Order placed successfully");
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 py-12 px-4">
@@ -101,7 +114,10 @@ export default function Cart() {
             </div>
 
             {/* Order Summary */}
-            <div className="h-fit rounded-3xl border border-zinc-800 bg-zinc-900/80 backdrop-blur-md p-6 sticky top-24">
+            <div
+              className="h-fit rounded-3xl border border-zinc-800 bg-zinc-900/80 backdrop-blur-md p-6 
+            sticky top-24"
+            >
               <h2 className="text-2xl font-bold text-white mb-6">
                 Order Summary
               </h2>
@@ -118,11 +134,12 @@ export default function Cart() {
 
               <div className="border-t border-zinc-800 pt-6">
                 <button
+                  onClick={handleOnclick}
                   className="w-full rounded-xl bg-linear-to-r from-cyan-500 to-blue-600
                   py-3 text-white font-semibold hover:scale-[1.02]
-                  active:scale-95 transition"
+                  active:scale-95 transition cursor-pointer"
                 >
-                  Proceed to Checkout
+                  {loading ? <LoaderButton /> : "Place Order"}
                 </button>
               </div>
             </div>

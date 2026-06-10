@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { type RootState, type AppDispatch } from "../../Redux/store";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { type ILoginError, type ILoginUser } from "../../types/types";
+import { type ILoginError, type ILoginUser } from "../../types/type";
 import { loginUser } from "../../Redux/authSlice";
 import { BiSolidUser } from "react-icons/bi";
 import { toast } from "sonner";

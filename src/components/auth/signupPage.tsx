@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   type IRegistrationError,
   type IRegistrationUser,
-} from "../../types/types";
+} from "../../types/type";
 import { registerUser } from "../../Redux/authSlice";
 import { BiSolidUser } from "react-icons/bi";
 import LoaderButton from "../loader/loaderButton";

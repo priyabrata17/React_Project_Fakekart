@@ -2,7 +2,7 @@ import { createProduct } from "../../Redux/productSlice";
 import type { AppDispatch, RootState } from "../../Redux/store";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import type { IProductsError, IProductsForm } from "../../types/types";
+import type { IProductsError, IProductsForm } from "../../types/type";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import LoaderButton from "../loader/loaderButton";

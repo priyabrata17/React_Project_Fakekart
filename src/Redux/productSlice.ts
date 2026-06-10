@@ -3,7 +3,7 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { IProductState, IUpdateProductPayload } from "../types/types";
+import type { IProductState, IUpdateProductPayload } from "../types/type";
 import axiosInstance from "../api/axiosInstance";
 import { endPoints } from "../api/endPoints";
 
