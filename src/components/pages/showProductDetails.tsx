@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 import { addToCart, removeFromCart } from "../../Redux/cartSlice";
+import { logout } from "../../Redux/authSlice";
+import { clearAuthStorage } from "../../helper/commonFunctions";
 
 export default function ShowProductDetails() {
   const { isLoading, productDetailsData } = useSelector(
@@ -49,6 +51,13 @@ export default function ShowProductDetails() {
       dispatch(removeFromCart(productId));
       setTimeout(() => navigate("/"), 1000);
     } catch (error: any) {
+      if (error?.message === "Access token expired !!") {
+        dispatch(logout());
+        clearAuthStorage();
+        toast.error("Session expired. Please login again !!");
+        setTimeout(() => navigate("/login"), 1500);
+        return;
+      }
       Swal.fire({
         title: "Error!",
         text: error?.message || "Failed to delete file !!",

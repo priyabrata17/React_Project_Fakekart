@@ -11,7 +11,7 @@ const navLinksPublic: INavLinks[] = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Contact Us", path: "/contact-us" },
-  { name: "Signup", path: "/register" },
+  { name: "Register", path: "/register" },
   { name: "Login", path: "/login" },
 ];
 

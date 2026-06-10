@@ -15,8 +15,8 @@ export default function LoginPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const [user, setUser] = useState<ILoginUser>({
-    email: "",
-    password: "",
+    email: "john@yopmail.com",
+    password: "john",
     rememberMe: false,
   });
 
@@ -174,52 +174,4 @@ export default function LoginPage() {
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl mx-auto min-h-screen">
-  //     <h2 className="text-2xl font-bold mb-6 text-center">Login Form</h2>
-
-  //     <form onSubmit={handleSubmit} className="space-y-4">
-  //       <div>
-  //         <label className="block mb-1 font-semibold">Email</label>
-  //         <input
-  //           type="email"
-  //           name="email"
-  //           value={user.email}
-  //           onChange={handleChange}
-  //           className="w-full border p-2 rounded"
-  //         />
-  //         <span className="text-red-500 text-sm">{error?.email}</span>
-  //       </div>
-  //       <div>
-  //         <label className="block mb-1 font-semibold">Password</label>
-  //         <input
-  //           type="password"
-  //           name="password"
-  //           value={user.password}
-  //           onChange={handleChange}
-  //           className="w-full border p-2 rounded"
-  //         />
-  //         <span className="text-red-500 text-sm">{error?.password}</span>
-  //       </div>
-
-  //       <button
-  //         type="submit"
-  //         disabled={isLoading}
-  //         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer
-  //           transition disabled:opacity-60 disabled:cursor-not-allowed"
-  //       >
-  //         {isLoading ? <LoaderButton /> : "Login"}
-  //       </button>
-  //     </form>
-  //     <div>
-  //       <div className="flex items-center gap-x-2 text-blue-600 hover:underline mt-3">
-  //         <span className="text-3xl">
-  //           <BiSolidUser />
-  //         </span>
-  //         <Link to="/register">Don't have an account ? Register</Link>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }

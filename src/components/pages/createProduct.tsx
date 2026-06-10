@@ -6,6 +6,8 @@ import type { IProductsError, IProductsForm } from "../../types/type";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import LoaderButton from "../loader/loaderButton";
+import { logout } from "../../Redux/authSlice";
+import { clearAuthStorage } from "../../helper/commonFunctions";
 
 export default function CreateProduct() {
   const navigate = useNavigate();
@@ -116,8 +118,14 @@ export default function CreateProduct() {
       toast.success(res?.message || "Product created successfully");
       setTimeout(() => navigate("/"), 1000);
     } catch (error: any) {
+      if (error?.message === "Access token expired !!") {
+        dispatch(logout());
+        clearAuthStorage();
+        toast.error("Session expired. Please login again !!");
+        setTimeout(() => navigate("/login"), 1500);
+        return;
+      }
       toast.error(error?.message || "Failed to create product !!");
-      console.error(error?.message);
     }
   };
 

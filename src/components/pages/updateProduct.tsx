@@ -7,6 +7,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import LoaderButton from "../loader/loaderButton";
 import { useParams } from "react-router-dom";
+import { logout } from "../../Redux/authSlice";
+import { clearAuthStorage } from "../../helper/commonFunctions";
 
 export default function UpdateProduct() {
   const navigate = useNavigate();
@@ -123,8 +125,15 @@ export default function UpdateProduct() {
       toast.success(res?.message || "Product updated successfully");
       setTimeout(() => navigate(`/details/${productId}`), 1000);
     } catch (error: any) {
+      console.log(error);
+      if (error?.message === "Access token expired !!") {
+        dispatch(logout());
+        clearAuthStorage();
+        toast.error("Session expired. Please login again !!");
+        setTimeout(() => navigate("/login"), 1000);
+        return;
+      }
       toast.error(error?.message || "Failed to update product !!");
-      console.error(error?.message);
     }
   };
 
